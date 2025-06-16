@@ -1,5 +1,5 @@
 #!/bin/sh
 npx pretty-quick --staged
-npx tsc --noEmit --project ./tsconfig.app.json
+npx tsc --noEmit --project ./tsconfig.json
 node scripts/lint-staged.cjs
 npx steiger ./src

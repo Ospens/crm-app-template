@@ -15,7 +15,7 @@ import reactA11y from "./.eslint_rules/react-a11y.js";
 import variables from "./.eslint_rules/variables.js";
 
 export default tseslint.config(
-  { ignores: ["dist", "vite.config.ts"] },
+  { ignores: ["dist", "webpack.config.cjs"] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],

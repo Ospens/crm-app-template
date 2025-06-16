@@ -15,7 +15,7 @@
 
 ```bash
 npx pretty-quick --staged # не вызывает ошибок, молча форматирует код
-npx tsc --noEmit --project ./tsconfig.app.json # может показывать ошибки
+npx tsc --noEmit --project ./tsconfig.json # может показывать ошибки
 node scripts/lint-staged.cjs # может показывать ошибки
 npx steiger ./src # может показывать ошибки
 ```
