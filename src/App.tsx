@@ -1,29 +1,40 @@
-import { useState } from "react";
-
-import reactLogo from "./assets/react.svg";
-
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import { LoginPage } from "./pages/login";
+import { RegisterPage } from "./pages/register";
+import { Dashboard } from "./pages/dashboard";
+import { CustomersPage } from "./pages/customers";
+import { DealsPage } from "./pages/deals";
+import { TasksPage } from "./pages/tasks";
+import PrivateRoute from "./routes/private/PrivateRoute";
+import PublicRoute from "./routes/public/PublicRoute";
+import { ToastContainer, Bounce } from 'react-toastify';
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Webpack + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((prevCount) => prevCount + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the React logo to learn more</p>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+      <Routes>
+        <Route path="/" element={<PrivateRoute> <Dashboard /> </PrivateRoute>} />
+        <Route path="/login" element={<PublicRoute> <LoginPage /> </PublicRoute>} />
+        <Route path="/register" element={<PublicRoute> <RegisterPage /> </PublicRoute>} />
+        <Route path="/customers" element={<PrivateRoute> <CustomersPage /> </PrivateRoute>} />
+        <Route path="/deals" element={<PrivateRoute> <DealsPage /> </PrivateRoute>} />
+        <Route path="/tasks" element={<PrivateRoute> <TasksPage /> </PrivateRoute>} />
+      </Routes>
     </>
   );
 }
