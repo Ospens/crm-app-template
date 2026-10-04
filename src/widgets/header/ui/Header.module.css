@@ -1,0 +1,34 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search {
+    cursor: pointer;
+    border: 1px solid #EAEEF4;
+    background: #fff;
+    border-radius: 50px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 200ms;
+}
+
+.search:hover {
+    opacity: 0.9;
+}
+
+.search img {
+    width: 20px;
+    height: 20px;
+}
+
+.user {}
+
+.user img {
+    cursor: pointer;
+    border-radius: 50px;
+    border: 1px solid #EAEEF4;
+}
