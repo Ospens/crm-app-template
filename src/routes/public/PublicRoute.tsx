@@ -1,11 +1,12 @@
-import { Navigate } from "react-router-dom"
+import { ReactNode } from "react";
 
-const PublicRoute = ({children}) => {
+import { Navigate } from "react-router-dom";
 
-    if(localStorage.getItem("access_token") !== null){
-        return <Navigate to={"/"}/>
-    }
-    return children
-}
+const PublicRoute = ({ children }: { children: ReactNode }) => {
+  if (localStorage.getItem("access_token") !== null) {
+    return <Navigate to={"/"} />;
+  }
+  return children;
+};
 
-export default PublicRoute
+export default PublicRoute;

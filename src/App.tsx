@@ -1,17 +1,20 @@
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import { Bounce, ToastContainer } from "react-toastify";
+
+import MainLayout from "./app/layouts/MainLayout";
+import { CustomersPage } from "./pages/customers";
+import { Dashboard } from "./pages/dashboard";
+import { DealsPage } from "./pages/deals";
 import { LoginPage } from "./pages/login";
 import { RegisterPage } from "./pages/register";
-import { Dashboard } from "./pages/dashboard";
-import { CustomersPage } from "./pages/customers";
-import { DealsPage } from "./pages/deals";
 import { TasksPage } from "./pages/tasks";
 import PrivateRoute from "./routes/private/PrivateRoute";
 import PublicRoute from "./routes/public/PublicRoute";
-import { ToastContainer, Bounce } from 'react-toastify';
+
+import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-
   return (
     <>
       <ToastContainer
@@ -28,12 +31,69 @@ function App() {
         transition={Bounce}
       />
       <Routes>
-        <Route path="/" element={<PrivateRoute> <Dashboard /> </PrivateRoute>} />
-        <Route path="/login" element={<PublicRoute> <LoginPage /> </PublicRoute>} />
-        <Route path="/register" element={<PublicRoute> <RegisterPage /> </PublicRoute>} />
-        <Route path="/customers" element={<PrivateRoute> <CustomersPage /> </PrivateRoute>} />
-        <Route path="/deals" element={<PrivateRoute> <DealsPage /> </PrivateRoute>} />
-        <Route path="/tasks" element={<PrivateRoute> <TasksPage /> </PrivateRoute>} />
+        <Route
+          element={
+            <PrivateRoute>
+              {" "}
+              <MainLayout />{" "}
+            </PrivateRoute>
+          }
+        >
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                {" "}
+                <Dashboard />{" "}
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/customers"
+            element={
+              <PrivateRoute>
+                {" "}
+                <CustomersPage />{" "}
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/deals"
+            element={
+              <PrivateRoute>
+                {" "}
+                <DealsPage />{" "}
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/tasks"
+            element={
+              <PrivateRoute>
+                {" "}
+                <TasksPage />{" "}
+              </PrivateRoute>
+            }
+          />
+        </Route>
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              {" "}
+              <LoginPage />{" "}
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              {" "}
+              <RegisterPage />{" "}
+            </PublicRoute>
+          }
+        />
       </Routes>
     </>
   );

@@ -1,11 +1,12 @@
-import { Navigate } from "react-router-dom"
+import { ReactNode } from "react";
 
-const PrivateRoute = ({children}) => {
+import { Navigate } from "react-router-dom";
 
-    if(localStorage.getItem("access_token") == null){
-        return <Navigate to={"/login"}/>
-    }
-    return children
-}
+const PrivateRoute = ({ children }: { children: ReactNode }) => {
+  if (localStorage.getItem("access_token") == null) {
+    return <Navigate to={"/login"} />;
+  }
+  return children;
+};
 
-export default PrivateRoute
+export default PrivateRoute;
